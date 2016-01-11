@@ -18,7 +18,6 @@ def matchups():
 	matchups_nba = tree.xpath('//div[contains(@class, "nbaTeamsRow")]//img//@title')
 	i = 0
 	while i < len(matchups_nba):
-		print matchups_nba[i]
 		away_team = matchups_nba[i].split()
 		if away_team[0] == 'Portland':
 			away_team = away_team[1] + away_team[2]
