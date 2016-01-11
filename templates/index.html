@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>NBA Visual</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	  <!--	SVG filters for icons on bubbles	-->
+	  <filter id='Hawks' x='0%' y='0%' width='100%' height='100%'><feImage xlink:href="{{url_for('static', filename='images/Hawks.png')}}"/></filter>
+	  
+	  <filter id='Celtics-icon' x='0%' y='0%' width='100%' height='100%'><feImage xlink:href="{{url_for('static', filename='images/Celtics.png')}}"/></filter>
+	<!-- First page -->
+	<div class='container page'>
+		<div class='row'>
+			<div class='col-md-12 title'>
+				<h1>Welcome to NBA Visual</h1>
+					<p>This is a small side project I worked on over winter break.</p>
+					<p>NBA Visual allows you to visualize NBA matchups for any given day.</p>
+					<p>Tips and improvements are greatly welcome!</p>
+					<a class='page-scroll' id='try-it-out-btn' href='#second-page'><span class='glyphicon glyphicon-chevron-down'></span></a>
+				</div>
+		</div>
+  	</div>
+  	<!-- Second page -->
+	<div class='container page' id='second-page'>
+		<div class='row'>
+			<div class='col-md-4'>
+				<div class='matchup-btns'>
+					<button type="button" class="btn btn-default subtract-day" aria-label="Left Align">
+						<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+					</button>
+					<button type="button" id='matchup-btn' class="btn btn-default">Matchup on <span id='matchup-date'></span></button>
+					<button type="button" class="btn btn-default add-day" aria-label="Right Align">
+						<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+			<div class='col-md-4 matchups-title'>
+				<h2>NBA Matchups</h2>
+			</div>
+			<div class='col-md-4'>
+				<div class="dropdown">
+					<button id="team-label-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Choose a team
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="team-label-btn">
+						<li><a href='#second-page'>All</a></li>
+						<li><a href='#second-page'>Hawks</a></li>
+						<li><a href='#second-page'>Celtics</a></li>
+						<li><a href='#second-page'>Hornets</a></li>
+						<li><a href='#second-page'>Bulls</a></li>
+						<li><a href='#second-page'>Cavaliers</a></li>
+						<li><a href='#second-page'>Mavericks</a></li>
+						<li><a href='#second-page'>Nuggets</a></li>
+						<li><a href='#second-page'>Pistons</a></li>
+						<li><a href='#second-page'>Warriors</a></li>
+						<li><a href='#second-page'>Rockets</a></li>
+						<li><a href='#second-page'>Pacers</a></li>
+						<li><a href='#second-page'>Clippers</a></li>
+						<li><a href='#second-page'>Lakers</a></li>
+						<li><a href='#second-page'>Grizzlies</a></li>
+						<li><a href='#second-page'>Heat</a></li>
+						<li><a href='#second-page'>Bucks</a></li>
+						<li><a href='#second-page'>Timberwolves</a></li>
+						<li><a href='#second-page'>Nets</a></li>
+						<li><a href='#second-page'>Pelicans</a></li>
+						<li><a href='#second-page'>Knicks</a></li>
+						<li><a href='#second-page'>Thunder</a></li>
+						<li><a href='#second-page'>Magic</a></li>
+						<li><a href='#second-page'>Sixers</a></li>
+						<li><a href='#second-page'>Suns</a></li>
+						<li><a href='#second-page'>TrailBlazers</a></li>
+						<li><a href='#second-page'>Kings</a></li>
+						<li><a href='#second-page'>Spurs</a></li>
+						<li><a href='#second-page'>Raptors</a></li>
+						<li><a href='#second-page'>Jazz</a></li>
+						<li><a href='#second-page'>Wizards</a></li>
+					</ul>
+				</div>	
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-4'>
+				<ul class='matchup-list list-unstyled'>
+				</ul>
+			</div>
+		</div>
+		<div id='map' style="position:relative; width:90%; margin: 0 auto;"></div>
+	</div>
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="{{url_for('static', filename='js/jquery.easing.min.js')}}"></script>
+  	<script src="{{url_for('static', filename='js/scrolling-nav.js')}}"></script>
+  	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
+	<script src="{{url_for('static', filename='node_modules/datamaps/dist/datamaps.usa.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/map.js')}}"></script>
+  	<script src="{{url_for('static', filename='js/team-select.js')}}"></script>
+	<script src="{{url_for('static', filename='js/matchups.js')}}"></script>
+	
+  </body>
+</html>

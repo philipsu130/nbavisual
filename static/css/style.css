@@ -1,0 +1,92 @@
+.col-md-4 {
+	padding:0;
+}
+
+html, body{
+	height:100%;
+}
+
+
+.page {
+	width:100%;
+	height:100%;
+	margin:0px;
+	overflow:hidden;
+}
+
+
+.test {
+	width:100%;
+	height:100%;
+}
+
+.logo-container {
+	height:100%;
+}
+
+
+#try-it-out-btn:hover{
+	border-top-color:#294866;
+	color:#294866;
+}
+
+
+#try-it-out {
+	text-align: center;
+	top:50%;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.dropdown-menu > li:nth-child(odd) {
+  	background: #f5f5f5;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
+	background: #cdcdcd
+}
+
+
+
+.dropdown {
+	float:right;
+	margin-top:20px;
+	margin-right:50px;
+	z-index:100;
+}
+
+
+.matchup-btns {
+	position:relative;
+	margin-top:20px;
+	margin-left:50px;
+	z-index:100;
+	float:left;
+}
+
+h2 {
+	color: #333;
+}
+
+.title {
+	text-align: center;
+	margin-top:200px;
+}
+
+#matchup-date {
+	font-weight: bold;
+}
+.matchup-list {
+	position:absolute;
+	margin: 0 auto;
+	margin-left:60px;
+	margin-top:20px;
+}
+
+.matchups-title {
+	text-align: center;
+}
