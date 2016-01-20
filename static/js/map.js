@@ -49,7 +49,10 @@ $(function() {
 //			borderColor: '#333',
 		},
 		bubblesConfig: {
-			exitDelay: 0
+			exitDelay: 0,
+			popupTemplate: function(geograph, data) {
+				return '<div class="hoverinfo"><strong>' + data.name + '</strong>' + data.radius + '</div>';
+			}
 		}
 	});
 	arenas = [
